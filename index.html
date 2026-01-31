@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Comercial Fred | Oficial</title>
+    <title>Comercial Fred | Links Oficiais</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Caveat:wght@700&display=swap" rel="stylesheet" />
@@ -26,7 +26,6 @@
             align-items: center;
         }
 
-        /* FUNDO FIXO E ESTÁVEL */
         body::before {
             content: "";
             position: fixed;
@@ -39,7 +38,7 @@
             background-position: center;
         }
 
-        /* BOTÃO DE COMPARTILHAR (TOPO DIREITO) */
+        /* BOTÃO COMPARTILHAR ESTILO IPHONE */
         .share-btn-top {
             position: absolute;
             top: 25px;
@@ -57,10 +56,7 @@
             color: #fff;
             cursor: pointer;
             z-index: 1000;
-            transition: 0.3s;
         }
-
-        .share-btn-top:active { background: var(--fred-yellow); color: #000; transform: scale(0.9); }
 
         .container {
             max-width: 420px;
@@ -71,7 +67,7 @@
             min-height: 100vh;
         }
 
-        .profile-header { text-align: center; margin-bottom: 30px; margin-top: 20px; }
+        .profile-header { text-align: center; margin-bottom: 30px; }
 
         .logo-box {
             width: 125px; height: 125px;
@@ -107,18 +103,19 @@
             display: flex; align-items: center;
             transition: 0.3s;
             border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        .btn-ofertas {
+        /* Botão Destaque: Grupo de Promoções */
+        .btn-promo {
             background: var(--fred-blue);
             color: #fff !important;
-            box-shadow: 0 10px 20px rgba(0, 74, 173, 0.4);
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
         .btn-white {
             background: #fff;
             color: var(--fred-blue) !important;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
         .btn-fred:active { transform: scale(0.96); }
@@ -147,19 +144,19 @@
         </header>
 
         <nav class="btn-stack">
-            <a href="#" class="btn-fred btn-ofertas">
-                <i class="fas fa-tags"></i>
-                <span>OFERTAS DA SEMANA</span>
+            <a href="https://chat.whatsapp.com/KCBMKhlzzd774YZN94KH44?mode=wwc" class="btn-fred btn-promo">
+                <i class="fab fa-whatsapp"></i>
+                <span>GRUPO DE PROMOÇÕES</span>
             </a>
 
-            <a href="https://maps.app.goo.gl/exemplo" class="btn-fred btn-white">
+            <a href="https://www.google.com/maps?q=Supermercado+Fred" class="btn-fred btn-white">
                 <i class="fas fa-map-marker-alt"></i>
                 <span>NOSSA LOCALIZAÇÃO</span>
             </a>
 
-            <a href="https://wa.me/5598982153842" class="btn-fred btn-white">
-                <i class="fab fa-whatsapp"></i>
-                <span>PEDIR NO WHATSAPP</span>
+            <a href="https://www.facebook.com/people/Supermercado-fred/100063520556211/" class="btn-fred btn-white">
+                <i class="fab fa-facebook"></i>
+                <span>PÁGINA DO FACEBOOK</span>
             </a>
 
             <a href="https://instagram.com/comercialfred" class="btn-fred btn-white">
@@ -175,24 +172,22 @@
 
     <script>
         function compartilharApp() {
-            // Este comando É o que abre a bandeja do TikTok/Instagram
+            const shareData = {
+                title: 'Comercial Fred',
+                text: 'Acesse os links oficiais do Comercial Fred!',
+                url: window.location.href
+            };
+
             if (navigator.share) {
-                navigator.share({
-                    title: 'Comercial Fred',
-                    text: 'Dá uma olhada no site do Comercial Fred! O barato de verdade.',
-                    url: window.location.href
-                })
-                .then(() => console.log('Bandeja aberta com sucesso!'))
-                .catch((error) => console.log('Erro ao abrir bandeja:', error));
+                navigator.share(shareData).catch(console.error);
             } else {
-                // Caso o navegador bloqueie (falta de HTTPS), ele faz o fallback
                 const tempInput = document.createElement("input");
                 tempInput.value = window.location.href;
                 document.body.appendChild(tempInput);
                 tempInput.select();
                 document.execCommand("copy");
                 document.body.removeChild(tempInput);
-                alert("Para abrir a bandeja de apps, o site precisa estar publicado em um endereço seguro (HTTPS). O link foi copiado!");
+                alert("Link copiado! Compartilhe com seus amigos.");
             }
         }
     </script>
