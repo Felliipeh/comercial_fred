@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Comercial Fred | Oficial</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Caveat:wght@700&display=swap" rel="stylesheet" />
+
+    <style>
+        :root {
+            --fred-yellow: #fff200;
+            --fred-blue: #004aad;
+            --bg-deep: #050505;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            margin: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* FUNDO FIXO E ESTÁVEL */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background-image: 
+                linear-gradient(180deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 74, 173, 0.3) 50%, rgba(5, 5, 5, 1) 100%),
+                url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1000&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* BOTÃO DE COMPARTILHAR (TOPO DIREITO) */
+        .share-btn-top {
+            position: absolute;
+            top: 25px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            cursor: pointer;
+            z-index: 1000;
+            transition: 0.3s;
+        }
+
+        .share-btn-top:active { background: var(--fred-yellow); color: #000; transform: scale(0.9); }
+
+        .container {
+            max-width: 420px;
+            padding: 40px 20px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .profile-header { text-align: center; margin-bottom: 30px; margin-top: 20px; }
+
+        .logo-box {
+            width: 125px; height: 125px;
+            margin: 0 auto 15px;
+            background: #fff;
+            border-radius: 50%;
+            border: 4px solid var(--fred-yellow);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        .logo-box img { width: 100%; height: 100%; object-fit: cover; }
+
+        .brand-name {
+            font-weight: 800; font-size: 2rem; color: var(--fred-yellow);
+            text-transform: uppercase; letter-spacing: -1px; margin: 0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .slogan {
+            font-family: 'Caveat', cursive; color: #fff;
+            font-size: 1.6rem; margin-top: 5px;
+        }
+
+        .btn-stack { display: flex; flex-direction: column; gap: 15px; width: 100%; }
+
+        .btn-fred {
+            text-decoration: none !important;
+            padding: 16px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            display: flex; align-items: center;
+            transition: 0.3s;
+            border: none;
+        }
+
+        .btn-ofertas {
+            background: var(--fred-blue);
+            color: #fff !important;
+            box-shadow: 0 10px 20px rgba(0, 74, 173, 0.4);
+        }
+
+        .btn-white {
+            background: #fff;
+            color: var(--fred-blue) !important;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-fred:active { transform: scale(0.96); }
+        .btn-fred i { width: 35px; font-size: 1.2rem; text-align: center; }
+        .btn-fred span { flex-grow: 1; text-align: center; margin-right: 35px; }
+
+        footer {
+            margin-top: auto; padding: 40px 0; text-align: center;
+            opacity: 0.6; font-size: 0.7rem; letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="share-btn-top" onclick="compartilharApp()">
+            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+        </div>
+
+        <header class="profile-header">
+            <div class="logo-box">
+                <img src="logo.png" alt="Comercial Fred" />
+            </div>
+            <h1 class="brand-name">Comercial Fred</h1>
+            <p class="slogan">O barato de verdade !</p>
+        </header>
+
+        <nav class="btn-stack">
+            <a href="#" class="btn-fred btn-ofertas">
+                <i class="fas fa-tags"></i>
+                <span>OFERTAS DA SEMANA</span>
+            </a>
+
+            <a href="https://maps.app.goo.gl/exemplo" class="btn-fred btn-white">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>NOSSA LOCALIZAÇÃO</span>
+            </a>
+
+            <a href="https://wa.me/5598982153842" class="btn-fred btn-white">
+                <i class="fab fa-whatsapp"></i>
+                <span>PEDIR NO WHATSAPP</span>
+            </a>
+
+            <a href="https://instagram.com/comercialfred" class="btn-fred btn-white">
+                <i class="fab fa-instagram"></i>
+                <span>SIGA NO INSTAGRAM</span>
+            </a>
+        </nav>
+
+        <footer>
+            MENU<span style="color:var(--fred-yellow)">BAIRRO</span> - 2026
+        </footer>
+    </div>
+
+    <script>
+        function compartilharApp() {
+            // Este comando É o que abre a bandeja do TikTok/Instagram
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Comercial Fred',
+                    text: 'Dá uma olhada no site do Comercial Fred! O barato de verdade.',
+                    url: window.location.href
+                })
+                .then(() => console.log('Bandeja aberta com sucesso!'))
+                .catch((error) => console.log('Erro ao abrir bandeja:', error));
+            } else {
+                // Caso o navegador bloqueie (falta de HTTPS), ele faz o fallback
+                const tempInput = document.createElement("input");
+                tempInput.value = window.location.href;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand("copy");
+                document.body.removeChild(tempInput);
+                alert("Para abrir a bandeja de apps, o site precisa estar publicado em um endereço seguro (HTTPS). O link foi copiado!");
+            }
+        }
+    </script>
+</body>
+</html>
